@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="{{ url_for('static', filename='/images/image_avec_rectangles.jpg') }}" alt="Selfie" style="width: 100%;height: 100%;max-width: 500px;">
+    <img src="http://localhost:8080{{ url_for('static', filename='images/result.jpg') }}" alt="Selfie" style="width: 100%;height: 100%;max-width: 500px;">
+    <h2>{{ "C'est un selfie" if is_selfie else "Ce n'est pas un selfie" }}</h2>
 </body>
 </html>
