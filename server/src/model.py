@@ -52,6 +52,6 @@ def detect_and_draw_selfie(image_path, output_image_path):
 
 
 # Exemple d'utilisation
-input_image_path = "../../images/selfie.jpg"
-output_image_path = "image_avec_rectangles.jpg"
+input_image_path = "static/images/selfie.jpg"
+output_image_path = "static/images/result.jpg"
 detect_and_draw_selfie(input_image_path, output_image_path)
