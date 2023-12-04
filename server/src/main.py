@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from werkzeug.utils import secure_filename
 import cv2
 import os
@@ -98,7 +98,7 @@ def index(input_image_path):
                 print("percent " + str(percentFace) + "%" + " of the image")
                 # Si la taille de la face est supérieure à 1/3 de la taille de l'image, alors c'est un selfie
                 global selfie
-                if percentFace > 20:
+                if percentFace > 10:
                     selfie = True
                     print("C'est un selfie !")
                 else:
@@ -106,6 +106,9 @@ def index(input_image_path):
                     print("Ce n'est pas un selfie !")
                     print('result : ' + str(percentFace) + '%' + ' of the image')
                 print("selfie " + str(selfie))
+                if (selfie):
+                    # Return 400 bad request
+                    abort(400, "Selfie is not authorized")
 
     # Exemple d'utilisation
     #input_image_path = os.path.join(os.path.dirname(__file__), 'static/images/selfie.jpg')
